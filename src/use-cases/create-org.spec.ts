@@ -19,17 +19,16 @@ describe('Create Org Use Case', () => {
     sut = new CreateOrgUseCase(orgsRepository)
 	})
 	
-  it('should be able to create gym', async () => {
+  it('should be able to create org', async () => {
     const { org } = await sut.execute({
       name: 'JavaScript Org',
 			description: null,
-			phone: '11971689500',
-			address: 'itapevi',
+			phone: '11911911911',
+			address: 'jandira',
 			cnpj: '05.942.000/0000-00',
-			email: 'gustavoramosrock@gmail.com',
-			password: 'testepassword',
+			email: 'gustavo@gmail.com',
+			password: 'secretpassword',
 		})
-
     expect(org.id).toEqual(expect.any(String))
   })
 
