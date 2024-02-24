@@ -48,12 +48,11 @@ Após terminar todos usecases e testar:
 
 #RFs (Requisito Funcional) (funcionalidade seca: ex> usuário pode fazer checkin)
 
-	- [] Deve ser possível cadastrar uma org
 	- [] Deve ser possível cadastrar um pet
 	- [] Deve ser possível listar todos os pets disponíveis para adoção em uma cidade
 	- [] Deve ser possível filtrar pets por suas características
 	- [] Deve ser possível visualizar detalhes de um pet para adoção
-	- [] Deve ser possível se cadastrar como uma ORG
+	- [x] Deve ser possível se cadastrar como uma ORG
 	- [] Deve ser possível realizar login como uma ORG
 
 #RNs (Regras de Negócio) (observações da funcionalidade seca: ex> usuário SÓ pode fazer checkin SE estiver a 10km da unidade)
@@ -68,7 +67,7 @@ Após terminar todos usecases e testar:
 
 #RNFs (requisitos não-funcionais) (requisitos mais tecnicos) (Qual estratégia de paginação, qual banco de dados usar, etc.)
 
-	- [] a senha precisa estar criptografada
-	- [] Os dados precisam estar em um banco PostgreSQL
+	- [x] a senha precisa estar criptografada
+	- [x] Os dados precisam estar em um banco PostgreSQL
 	- [] Todas listas de dados precisam estar paginadas com 20 itens por página
 	- [] JWT para fazer autenticação de uma ORG
