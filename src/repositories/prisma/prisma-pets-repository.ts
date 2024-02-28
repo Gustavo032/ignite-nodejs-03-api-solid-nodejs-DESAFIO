@@ -1,27 +1,27 @@
-import { CheckIn, Prisma } from "@prisma/client";
+import { Pet, Prisma } from "@prisma/client";
 import { GetResult } from "@prisma/client/runtime/library";
-import { CheckInsRepository } from "../pets-repository";
+import { PetsRepository } from "../pets-repository";
 import { prisma } from "@/lib/prisma";
 import dayjs from "dayjs";
 
-export class PrismaCheckInsRepository implements CheckInsRepository {
+export class PrismaPetsRepository implements PetsRepository {
 	async findById(id: string) {
-		const checkIn = await prisma.checkIn.findUnique({
+		const pet = await prisma.pet.findUnique({
 			where: {
 				id,
 			}
 		})
 
-		return checkIn
+		return pet
 	}
-	
+
 	async findByUserIdOnDate(userId: string, date: Date) {
 		const startOfTheday = dayjs(date).startOf('date')
 		const endOfTheday = dayjs(date).endOf('date')
 
-		const checkIn = await prisma.checkIn.findFirst({
+		const pet = await prisma.pet.findFirst({
 			where: {
-				user_id: userId,
+				userId: userId,
 				created_at: {
 					gte: startOfTheday.toDate(),
 					lte: endOfTheday.toDate()
@@ -29,47 +29,47 @@ export class PrismaCheckInsRepository implements CheckInsRepository {
 			}
 		})
 
-		return checkIn
+		return pet
 	}
 
 	async findManyByUserId(userId: string, page: number) {
-		const checkIns = prisma.checkIn.findMany({
+		const pets = prisma.pet.findMany({
 			where: {
-				user_id: userId,
+				userId: userId,
 			},
 			take: 20,
 			skip: (page - 1) * 20
 		})
 
-		return checkIns
+		return pets
 	}
 
 	async countByUserId(userId: string) {
-		const count = await prisma.checkIn.count({
+		const count = await prisma.pet.count({
 			where: {
-				user_id: userId
+				userId: userId
 			}
 		})
 		
 		return count
 	}
 
-	async create(data: Prisma.CheckInUncheckedCreateInput) {
-		const checkIn = await prisma.checkIn.create({
+	async create(data: Prisma.PetUncheckedCreateInput) {
+		const pet = await prisma.pet.create({
 			data
 		})
 
-		return checkIn
+		return pet
 	}
 
-	async save(data: CheckIn) {
-		const checkIn = await prisma.checkIn.update({
+	async save(data: Pet) {
+		const pet = await prisma.pet.update({
 			where: {
 				id: data.id,
 			},
 			data,
 		})
 
-		return checkIn
+		return pet
 	}
 }

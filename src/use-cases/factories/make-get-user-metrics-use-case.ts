@@ -1,9 +1,9 @@
-import { PrismaCheckInsRepository } from "@/repositories/prisma/prisma-pets-repository copy"
-import { GetUserMetricsUseCase } from "../../use-cases.old/get-user-metrics"
+import { PrismaPetsRepository } from "@/repositories/prisma/prisma-pets-repository"
+import { GetUserMetricsUseCase } from "../../use-cases/get-user-metrics"
 
 export function makeGetUserMetricsUseCase(){
-	const checkInsRepository = new PrismaCheckInsRepository()
-	const useCase = new GetUserMetricsUseCase(checkInsRepository)
+	const petsRepository = new PrismaPetsRepository()
+	const useCase = new GetUserMetricsUseCase(petsRepository)
 	
 	return useCase
 }	

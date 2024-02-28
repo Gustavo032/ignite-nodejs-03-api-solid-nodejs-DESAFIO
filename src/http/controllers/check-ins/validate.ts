@@ -1,6 +1,6 @@
 import { FastifyRequest, FastifyReply } from 'fastify'
 import { z } from 'zod'
-import { makeCreateGymUseCase } from '@/use-cases/factories/make-create-gym-use-case'
+import { makeCreateGymUseCase } from '@/use-cases/factories/make-create-org-use-case'
 import { makeCheckInUseCase } from '@/use-cases/factories/make-check-in-use-case'
 import { makeValidateCheckInUseCase } from '@/use-cases/factories/make-validate-check-in-use-case'
 

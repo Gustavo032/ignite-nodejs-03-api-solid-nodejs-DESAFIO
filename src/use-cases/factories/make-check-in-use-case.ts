@@ -1,4 +1,4 @@
-import { PrismaCheckInsRepository } from "@/repositories/prisma/prisma-pets-repository copy"
+import { PrismaCheckInsRepository } from "@/repositories/prisma/prisma-pets-repository"
 import { CheckInUseCase } from "../register-pet"
 import { PrismaGymsRepository } from "@/repositories/prisma/prisma-orgs-repository"
 

@@ -4,13 +4,15 @@ import { OrgsRepository } from "@/repositories/orgs-repository";
 import { ResourceNotFoundError } from "./errors/resource-not-found";
 
 interface RegisterPetUseCaseRequest{
-	id?: string | undefined,
+	id: string,
 	name: string,
 	age: number,
 	race: string,
-	observation?: string | null | undefined,
-	created_at?: string | Date | undefined,
-	orgId: string
+	observation: string | null,
+	created_at: Date,
+	orgId: string,
+	userId: string | null,
+	category: string,
 }
 
 interface RegisterPetUseCaseResponse {
@@ -23,7 +25,7 @@ export class RegisterPetUseCase{
 		private orgsRepository: OrgsRepository
 	){}
 	
-	async execute({orgId, age, name, race, created_at, id, observation}: RegisterPetUseCaseRequest): Promise<RegisterPetUseCaseResponse>{
+	async execute({orgId, age, name, race, created_at, id, observation, category, userId}: RegisterPetUseCaseRequest): Promise<RegisterPetUseCaseResponse>{
 		const org = await this.orgsRepository.findByOrgId(orgId)
 
 		if(!org){
@@ -38,6 +40,8 @@ export class RegisterPetUseCase{
 			created_at,
 			id,
 			observation,
+			category,
+			userId,
 		})
 		
 		return {

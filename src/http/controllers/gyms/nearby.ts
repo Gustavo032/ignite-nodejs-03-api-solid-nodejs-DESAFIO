@@ -1,8 +1,8 @@
 import { FastifyRequest, FastifyReply } from 'fastify'
 import { z } from 'zod'
-import { makeCreateGymUseCase } from '@/use-cases/factories/make-create-gym-use-case'
+import { makeCreateGymUseCase } from '@/use-cases/factories/make-create-org-use-case'
 import { makeSearchGymsUseCase } from '@/use-cases/factories/make-search-orgs-use-case'
-import { makeFetchNearbyGymsUseCase } from '@/use-cases/factories/make-fetch-nearby-gyms-use-case'
+import { makeFetchNearbyGymsUseCase } from '@/use-cases/factories/make-fetch-nearby-orgs-use-case'
 
 export async function nearby(request: FastifyRequest, reply: FastifyReply) {
 const nearbyGymsQuerySchema = z.object({

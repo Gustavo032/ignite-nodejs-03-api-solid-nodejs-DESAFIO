@@ -43,6 +43,8 @@ describe('Create a Pet UseCase', () => {
 			created_at: new Date(),
 			id: 'dog-01',
 			observation: 'cachorro com suspeitas de tal coisas',
+			category: 'dog',
+			userId: null,
 		})
 
     expect(pet.id).toEqual(expect.any(String))

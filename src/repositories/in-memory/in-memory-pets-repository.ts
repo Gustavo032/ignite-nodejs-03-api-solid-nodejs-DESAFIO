@@ -7,7 +7,7 @@ import dayjs from 'dayjs'
 export class InMemoryPetsRepository implements PetsRepository {	
 	public items: Pet[] = []
 	
-	async findByPetIdOnDate(userId: string, date: Date) {
+	async findByUserIdOnDate(userId: string, date: Date) {
 		const startOfTheDay = dayjs(date).startOf('date')
 		const endOfTheDay = dayjs(date).endOf('date') 
 
