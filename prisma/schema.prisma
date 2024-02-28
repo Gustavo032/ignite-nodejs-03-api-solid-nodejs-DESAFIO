@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -12,7 +9,6 @@ datasource db {
 
 model Org {
   id            String   @id @default(uuid())
-  name          String
   description   String?
   phone         String
   cnpj          String   @unique
@@ -20,38 +16,35 @@ model Org {
   address       String
   password_hash String
   created_at    DateTime @default(now())
-  // criptografia => Vai e Volta
-  // Hashing => só podemos Ir // não descriptografa
-  pets          Pet[] // varios pets na mesma Org
-  //camelCase aqui pois não serão criados no banco de dados, só para manipular melhor no JS
+  name          String
+  pets          Pet[]
 
   @@map("orgs")
 }
 
 model User {
   id            String   @id @default(uuid())
-  name          String
   email         String   @unique
   password_hash String
   created_at    DateTime @default(now())
-  // criptografia => Vai e Volta
-  // Hashing => só podemos Ir // não descriptografa
-  //camelCase aqui pois não serão criados no banco de dados, só para manipular melhor no JS
+  name          String
+  pets          Pet[]
 
   @@map("users")
 }
 
 model Pet {
-  id          String  @id @default(uuid())
+  id          String   @id @default(uuid())
   name        String
   age         Int
   race        String
   observation String?
-
-  created_at DateTime @default(now())
-
-  org   Org    @relation(fields: [orgId], references: [id])
-  orgId String
+  created_at  DateTime @default(now())
+  orgId       String
+  userId      String?
+  category    String
+  org         Org      @relation(fields: [orgId], references: [id])
+  user        User?    @relation(fields: [userId], references: [id])
 
   @@map("pets")
 }

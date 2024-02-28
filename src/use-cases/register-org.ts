@@ -4,7 +4,7 @@ import { Org } from '@prisma/client'
 import { OrgsRepository } from '@/repositories/orgs-repository'
 import { UsersRepository } from '@/repositories/users-repository'
 
-interface CreateOrgUseCaseRequest {
+interface RegisterOrgUseCaseRequest {
   name: string
   description: string | null
 	phone: string
@@ -15,10 +15,10 @@ interface CreateOrgUseCaseRequest {
 }
 
 
-interface CreateOrgUseCaseResponse {
+interface RegisterOrgUseCaseResponse {
   org: Org
 }
-export class CreateOrgUseCase {
+export class RegisterOrgUseCase {
   constructor(
 		private orgsRepository: OrgsRepository,
 		private usersRepository: UsersRepository
@@ -32,7 +32,7 @@ export class CreateOrgUseCase {
 		email,
 		address,
 		password
-  }: CreateOrgUseCaseRequest): Promise<CreateOrgUseCaseResponse> {
+  }: RegisterOrgUseCaseRequest): Promise<RegisterOrgUseCaseResponse> {
 
 		const password_hash = await hash(password, 6)
 

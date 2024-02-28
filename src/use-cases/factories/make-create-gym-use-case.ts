@@ -1,4 +1,4 @@
-import { CreateGymUseCase } from "../create-org"
+import { CreateGymUseCase } from "../register-org"
 import { PrismaGymsRepository } from "@/repositories/prisma/prisma-orgs-repository"
 
 export function makeCreateGymUseCase(){

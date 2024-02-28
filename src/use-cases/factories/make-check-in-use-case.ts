@@ -1,5 +1,5 @@
 import { PrismaCheckInsRepository } from "@/repositories/prisma/prisma-pets-repository copy"
-import { CheckInUseCase } from "../../use-cases.old/check-in"
+import { CheckInUseCase } from "../register-pet"
 import { PrismaGymsRepository } from "@/repositories/prisma/prisma-orgs-repository"
 
 export function makeCheckInUseCase(){

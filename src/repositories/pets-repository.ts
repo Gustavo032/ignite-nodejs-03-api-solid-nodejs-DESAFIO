@@ -1,10 +1,10 @@
-import { CheckIn, Prisma } from "@prisma/client";
+import { Pet, Prisma } from "@prisma/client";
 
-export interface CheckInsRepository {
-	findById(id: string): Promise<CheckIn | null>
-	findByUserIdOnDate(userId: string, date: Date): Promise<CheckIn | null>
-	findManyByUserId(userId: string, page: number): Promise<CheckIn[]>
+export interface PetsRepository {
+	findById(id: string): Promise<Pet | null>
+	findByPetIdOnDate(userId: string, date: Date): Promise<Pet | null>
+	findManyByUserId(userId: string, page: number): Promise<Pet[]>
 	countByUserId(userId: string): Promise<number>
-	create(data: Prisma.): Promise<CheckIn>
-	save(checkIn: CheckIn): Promise<CheckIn>
+	create(data: Prisma.PetUncheckedCreateInput): Promise<Pet>
+	save(Pet: Pet): Promise<Pet>
 }
