@@ -5,6 +5,7 @@ export interface PetsRepository {
 	findByUserIdOnDate(userId: string, date: Date): Promise<Pet | null>
 	findManyByUserId(userId: string, page: number): Promise<Pet[]>
 	countByUserId(userId: string): Promise<number>
+	findManyNearby(city: string, page:number): Promise<Pet[]>; // Alteração aqui
 	create(data: Prisma.PetUncheckedCreateInput): Promise<Pet>
 	save(Pet: Pet): Promise<Pet>
 }

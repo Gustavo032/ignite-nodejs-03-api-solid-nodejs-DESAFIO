@@ -62,6 +62,18 @@ export class PrismaPetsRepository implements PetsRepository {
 		return pet
 	}
 
+	
+	async findManyNearby(city: string ): Promise<Pet[]> {
+		const pets = await prisma.pet.findMany({
+			where: {
+				address: {
+					contains:city
+				},
+			},
+		});
+		
+		return pets;
+	}
 	async save(data: Pet) {
 		const pet = await prisma.pet.update({
 			where: {

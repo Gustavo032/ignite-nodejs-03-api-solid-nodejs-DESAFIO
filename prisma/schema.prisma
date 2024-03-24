@@ -16,8 +16,9 @@ model Org {
   address       String
   password_hash String
   created_at    DateTime @default(now())
-  name          String
   pets          Pet[]
+
+  name String
 
   @@map("orgs")
 }
@@ -39,6 +40,7 @@ model Pet {
   age         Int
   race        String
   observation String?
+  address     String
   created_at  DateTime @default(now())
   orgId       String
   userId      String?

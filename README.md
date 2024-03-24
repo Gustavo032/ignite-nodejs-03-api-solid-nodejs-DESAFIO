@@ -48,7 +48,7 @@ Após terminar todos usecases e testar:
 
 #RFs (Requisito Funcional) (funcionalidade seca: ex> usuário pode fazer checkin)
 
-	- [] Deve ser possível cadastrar um pet
+	- [x] Deve ser possível cadastrar um pet
 	- [] Deve ser possível listar todos os pets disponíveis para adoção em uma cidade
 	- [] Deve ser possível filtrar pets por suas características
 	- [] Deve ser possível visualizar detalhes de um pet para adoção
@@ -57,7 +57,7 @@ Após terminar todos usecases e testar:
 
 #RNs (Regras de Negócio) (observações da funcionalidade seca: ex> usuário SÓ pode fazer checkin SE estiver a 10km da unidade)
 
-	- [] Para listar os pets, obrigiatoramente precisamos informar a cidade 
+	- [] Para listar os pets, obrigatoriamente precisamos informar a cidade 
 	- [] Uma ORG precisa ter um endereço e um número de WhatsApp
 	- [] Um pet deve estar ligado a uma ORG
 	- [] O usuário que quer adotar, entrará em contato com a ORG via WhatsApp

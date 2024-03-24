@@ -29,7 +29,7 @@ export class InMemoryPetsRepository implements PetsRepository {
 
 	async findManyByUserId(userId: string, page: number) {
 		return this.items
-		.filter((item) => item.id == userId)
+		.filter((item) => item.userId == userId)
 		.slice((page - 1) * 20, page * 20)
 	}
 
@@ -58,23 +58,32 @@ export class InMemoryPetsRepository implements PetsRepository {
     return this.items.filter((pet) => pet.userId === userId).length
   }
 
+	async findManyNearby(city: string, page: number): Promise<Pet[]> {
+		// Supondo que this.items é uma lista de objetos do tipo Pet
+		return this.items
+			.filter((item) => item.address.includes(city))
+			.slice((page - 1) * 20, page * 20);
+	}
+	
   async create(data: Prisma.PetUncheckedCreateInput) {
     const pet = {
         id: randomUUID(),
         name: data.name,
         age: data.age,
         race: data.race,
-        observation: typeof data.observation === 'undefined' ? null : data.observation,
-        created_at: new Date(),
+        observation: data.observation ?? null,
         orgId: data.orgId,
-        userId: typeof data.userId === 'undefined' ? null : data.userId,
+        userId: data.userId ?? null,
         category: data.category,
+        address: data.address, // Certifique-se de incluir o campo address
+        created_at: new Date(),
     };
 
     this.items.push(pet);
 
     return pet;
-	}
+}
+
 }
 
 // {

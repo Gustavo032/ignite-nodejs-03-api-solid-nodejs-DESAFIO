@@ -24,27 +24,28 @@ describe('Create a Pet UseCase', () => {
 	
   it('should be able to register a pet in org', async () => {
 
-		orgsRepository.create({
-			id: 'org-01',
-      name: 'JavaScript Org',
-			description: null,
-			phone: '11911911911',
-			address: 'jandira',
-			cnpj: '05.942.000/0000-00',
-			email: 'gustavo@gmail.com',
-			password_hash: 'secretpassword',
-		})
+		const org = await orgsRepository.create({
+			id: '1',
+			description: 'Grooming service',
+			phone: '123456789',
+			cnpj: '12345678901234',
+			email: 'grooming@example.com',
+			address: 'itapevi', // Certifique-se de que a cidade está correta
+			password_hash: 'hashedpassword',
+			name: 'Pet Grooming',
+		});
 
     const { pet } = await sut.execute({
 			age: 10,
 			name: 'namedog-01',
-			orgId: 'org-01',
+			orgId: org.id,
 			race: 'Javascript',
 			created_at: new Date(),
 			id: 'dog-01',
 			observation: 'cachorro com suspeitas de tal coisas',
 			category: 'dog',
 			userId: null,
+			address: 'itapevi',
 		})
 
     expect(pet.id).toEqual(expect.any(String))

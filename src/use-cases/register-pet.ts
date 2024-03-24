@@ -13,6 +13,7 @@ interface RegisterPetUseCaseRequest{
 	orgId: string,
 	userId: string | null,
 	category: string,
+	address: string
 }
 
 interface RegisterPetUseCaseResponse {
@@ -25,10 +26,11 @@ export class RegisterPetUseCase{
 		private orgsRepository: OrgsRepository
 	){}
 	
-	async execute({orgId, age, name, race, created_at, id, observation, category, userId}: RegisterPetUseCaseRequest): Promise<RegisterPetUseCaseResponse>{
+	async execute({orgId, age, name, race, created_at, id, observation, category, userId, address}: RegisterPetUseCaseRequest): Promise<RegisterPetUseCaseResponse>{
 		const org = await this.orgsRepository.findByOrgId(orgId)
 
-		if(!org){
+		console.log(org + " has been registeredAAAAAAAAAAAAAAAAAAAregisteredAAAAAAAAAAAAAAAAAAAregisteredAAAAAAAAAAAAAAAAAAAregisteredAAAAAAAAAAAAAAAAAAAregisteredAAAAAAAAAAAAAAAAAAAregisteredAAAAAAAAAAAAAAAAAAAregisteredAAAAAAAAAAAAAAAAAAAregisteredAAAAAAAAAAAAAAAAAAAregisteredAAAAAAAAAAAAAAAAAAAregisteredAAAAAAAAAAAAAAAAAAA")
+		if(!org?.id){
 			throw new ResourceNotFoundError();
 		}
 		
@@ -42,6 +44,7 @@ export class RegisterPetUseCase{
 			observation,
 			category,
 			userId,
+			address,
 		})
 		
 		return {

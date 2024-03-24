@@ -1,6 +1,6 @@
 import { prisma } from '@/lib/prisma'
 import { Org, Prisma } from '@prisma/client'
-import { FindManyNearbyParams, OrgsRepository } from '../orgs-repository'
+import { OrgsRepository } from '../orgs-repository'
 
 export class PrismaOrgsRepository implements OrgsRepository {
 	async findByOrgId(id: string) {
@@ -13,15 +13,7 @@ export class PrismaOrgsRepository implements OrgsRepository {
     return org
   }
 
-	async findManyNearby({ city }: FindManyNearbyParams) {
-    const orgs = await prisma.org.findMany({
-			where: {
-				address: city,
-			},
-		});
-		
-    return orgs
-  }
+	
 
 	async searchMany(query: string, page: number) {
     const orgs = await prisma.org.findMany({

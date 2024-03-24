@@ -24,12 +24,14 @@ describe('Fetch User Pets History Use Case', () => {
 		
 		await petsRepository.create({
 			orgId: 'org-01',
+			address: 'itapevi',
 			name: 'Scar', age: 10, race: 'race01', category: 'dog',
 			userId: 'user-01',
 		})
 		
 		await petsRepository.create({
 			orgId: 'org-02',
+			address: 'itapevi',
 			name: '234', age: 10, race: 'race0123', category: 'dog2',
 			userId: 'user-01',
 		})
@@ -38,8 +40,7 @@ describe('Fetch User Pets History Use Case', () => {
 			userId: 'user-01',
 			page:1
     })
-    
-  
+      
     expect(pets).toHaveLength(2)
 		expect(pets).toEqual([
 			expect.objectContaining({ orgId: 'org-01'}),
@@ -52,6 +53,7 @@ describe('Fetch User Pets History Use Case', () => {
 		for (let i = 1; i <= 22; i++){
 			await petsRepository.create({
 				orgId: `org-${i}`,
+				address: 'itapevi',
 				name: 'Scar', age: 10, race: 'race01', category: 'dog',
 				userId: 'user-01',
 			})
